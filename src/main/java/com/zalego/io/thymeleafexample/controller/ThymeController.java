@@ -24,4 +24,9 @@ public class ThymeController {
     public String login(Model model){
         return "login";
     }
+
+    @GetMapping("/register")
+    public String register(Model model){
+        return "registration";
+    }
 }
