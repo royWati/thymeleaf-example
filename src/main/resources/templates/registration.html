@@ -29,7 +29,7 @@
 
     <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
-
+    <link rel="stylesheet" type="text/css" th:href="@{/css/sweetalert2.min.css}">
 </head>
 <body>
 <div class="limiter">
@@ -43,17 +43,17 @@
                   Registration
                 </span>
                 <div class="wrap-input100 validate-input" data-validate="Enter name">
-                    <input class="input100" type="text" name="name" placeholder="Enter your Username">
+                    <input class="input100" type="text" name="name" id="name" placeholder="Enter your Username">
                     <span class="focus-input100" data-placeholder="&#xf207;"></span>
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate="Enter Email">
-                    <input class="input100" type="email" name="email" placeholder="Enter your Email">
+                    <input class="input100" type="email" name="email" id="email" placeholder="Enter your Email">
                     <span class="focus-input100" data-placeholder="&#xf207;"></span>
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate="Enter Phonenumber">
-                    <input class="input100" type="number" name="phone" placeholder="Enter your phonenumber">
+                    <input class="input100" type="number" name="phone" id="phone" placeholder="Enter your phonenumber">
                     <span class="focus-input100" data-placeholder="&#xf207;"></span>
                 </div>
 
@@ -104,6 +104,7 @@
 
 <script th:src="@{/js/main.js}"></script>
 <script th:src="@{/js/controller.js}"></script>
+<script th:src="@{/js/sweetalert2.min.js}"></script>
 
 <script>
     window.dataLayer = window.dataLayer || [];

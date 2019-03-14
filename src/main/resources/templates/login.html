@@ -34,7 +34,7 @@
 <div class="limiter">
 <div class="container-login100" >
 <div class="wrap-login100">
-<form class="login100-form validate-form" th:action="@{/thyme/java}" method="post">
+<form class="login100-form validate-form">
 <span class="login100-form-logo">
 <i class="zmdi zmdi-landscape"></i>
 </span>
@@ -42,11 +42,11 @@
 Log in
 </span>
 <div class="wrap-input100 validate-input" data-validate="Enter username">
-<input class="input100" type="text" name="username" placeholder="Username">
+<input class="input100" type="email" name="email" id="email" placeholder="Email">
 <span class="focus-input100" data-placeholder="&#xf207;"></span>
 </div>
 <div class="wrap-input100 validate-input" data-validate="Enter password">
-<input class="input100" type="password" name="pass" placeholder="Password">
+<input class="input100" type="password" name="password" id="password" placeholder="Password">
 <span class="focus-input100" data-placeholder="&#xf191;"></span>
 </div>
 <div class="contact100-form-checkbox">
@@ -56,7 +56,7 @@ Remember me
 </label>
 </div>
 <div class="container-login100-form-btn">
-<button type="submit" class="login100-form-btn">
+<button type="button" onclick="AuthorizeUser()" class="login100-form-btn">
 Login
 </button>
 </div>
@@ -92,6 +92,7 @@ Forgot Password?
 <script th:src="@{/vendor/countdowntime/countdowntime.js}"></script>
 
 <script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/controller.js}"></script>
 
 <script>
 	  window.dataLayer = window.dataLayer || [];

@@ -2,12 +2,11 @@ package com.zalego.io.thymeleafexample.entities;
 
 import com.zalego.io.thymeleafexample.configs.Encrypt;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
+import java.util.Set;
 
 @Entity
 @Table(name = "Users")
@@ -21,6 +20,18 @@ public class Users extends BaseEntity{
     private String password;
     @Column(name = "phone")
     private BigInteger phone;
+
+    @OneToMany(mappedBy = "id",
+            fetch = FetchType.LAZY)
+    private Set<Hotel> hotels;
+
+    public Set<Hotel> getHotels() {
+        return hotels;
+    }
+
+    public void setHotels(Set<Hotel> hotels) {
+        this.hotels = hotels;
+    }
 
     public String getName() {
         return name;
