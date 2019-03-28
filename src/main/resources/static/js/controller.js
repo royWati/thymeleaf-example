@@ -77,7 +77,15 @@ function AuthorizeUser() {
         dataType:"json",
         success:function (response) {
             console.log(response);
-           window.location="../users/dashboard";
+
+            var id=response.password+"###"+response.id;
+            var uuid=response.uuid+"###"+response.password;
+
+
+            localStorage.setItem("id",response.id);
+            localStorage.setItem("uuid",btoa(uuid));
+            localStorage.setItem("name",response.name);
+           window.location="../thyme/dashboard";
         },
         error:function (response,status,error) {
             var jsonFile =$.parseJSON(response.responseText);
@@ -87,4 +95,45 @@ function AuthorizeUser() {
     });
 
 
+}
+function windowOpener(url) {
+    window.location=url;
+}
+function addHotel(){
+    var name = document.getElementById("hotel_name").value;
+    var location = document.getElementById("hotel_location").value;
+    var description = document.getElementById("description").value;
+    var phone = document.getElementById("phonenumber").value;
+    var email = document.getElementById("email").value;
+
+    $.ajax({
+        url:"../hotel",
+        method:"POST",
+        dataType:"json",
+        contentType:"application/json",
+        data: JSON.stringify({
+            name:name,
+            location:{
+                id:parseInt(location)
+            },
+            description:description,
+            phone:phone,
+            email:email,
+            user:{
+                id:parseInt(localStorage.getItem("id"))
+            }
+
+        }),
+        success:function (response) {
+            console.log(response);
+            swal({
+                title:"Hotel",
+                text:"hotel added successfully ",
+                type:"success",
+                buttonsStyling:true,
+                confirmButtonClass:"btn btn-success"
+            });
+            windowOpener('./dashboard');
+        }
+    });
 }

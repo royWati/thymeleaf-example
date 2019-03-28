@@ -29,4 +29,12 @@ public class ThymeController {
     public String register(Model model){
         return "registration";
     }
+    @GetMapping("/dashboard")
+    public String viewDashboard(Model model){
+        return "dashboard";
+    }
+    @GetMapping("/add-hotel")
+    public String addHotel(Model model){
+        return "add-hotel";
+    }
 }

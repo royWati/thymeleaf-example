@@ -6,6 +6,8 @@ import javax.persistence.*;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,17 +23,16 @@ public class Users extends BaseEntity{
     @Column(name = "phone")
     private BigInteger phone;
 
-    @OneToMany(mappedBy = "id",
-            fetch = FetchType.LAZY)
-    private Set<Hotel> hotels;
+//    @OneToMany(mappedBy = "user")
+//    private List<Hotel> hotels=new ArrayList<>();
 
-    public Set<Hotel> getHotels() {
-        return hotels;
-    }
-
-    public void setHotels(Set<Hotel> hotels) {
-        this.hotels = hotels;
-    }
+//    public List<Hotel> getHotels() {
+//        return hotels;
+//    }
+//
+//    public void setHotels(List<Hotel> hotels) {
+//        this.hotels = hotels;
+//    }
 
     public String getName() {
         return name;

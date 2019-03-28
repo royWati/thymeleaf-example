@@ -17,7 +17,7 @@ public class HotelService {
     private HotelRepository repository;
 
     public List<Hotel> findAll(){
-        return repository.findAll();
+        return repository.findHotelByDeletedStatus(false);
     }
     public Hotel addHotel(Hotel hotel){
         return repository.save(hotel);
@@ -39,11 +39,14 @@ public class HotelService {
     }
 
     public List<Hotel> findByHotelsByUser(Users users){
-        List<Hotel> hotels = new ArrayList<>();
-        repository.findByUser(users).ifPresent(hotel -> {
-            hotels.add(hotel);
+        return repository.findByUser(users);
+    }
+
+    public void deleteHotel(long id){
+        repository.findById(id).ifPresent(hotel -> {
+            hotel.setDeletedStatus(true);
+            repository.save(hotel);
         });
-        return hotels;
     }
 
 }

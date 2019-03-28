@@ -1,5 +1,9 @@
 package com.zalego.io.thymeleafexample.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonMerge;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.math.BigInteger;
 
@@ -8,10 +12,11 @@ import java.math.BigInteger;
 public class Hotel extends BaseEntity {
     @Column(name = "name")
     private String name;
-
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.MERGE)
     @JoinColumn(name = "location",
     nullable = false)
+    @JsonProperty("location")
+    @JsonMerge
     private Location location;
     @Column(name = "email")
     private String email;
@@ -20,9 +25,11 @@ public class Hotel extends BaseEntity {
     @Column(name = "description")
     private String description;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id",
-    nullable = false)
+    nullable = true)
+    @JsonProperty("user")
+    @JsonMerge
     private Users user;
 
     public String getName() {
